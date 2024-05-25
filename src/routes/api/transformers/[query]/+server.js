@@ -14,7 +14,7 @@ console.log(__dirname)
 // env.allowRemoteModels = true;
 
 env.allowLocalModels = true;
-env.localModelPath = path.resolve('models/');
+env.localModelPath = 'https://local-llms-test.netlify.app/models/';
 env.allowRemoteModels = false;
 
 export async function GET({ locals, params }) {
