@@ -14,9 +14,9 @@
 	<textarea bind:value={query}></textarea>
 	<button on:click={generateAnswer}>Generate</button>
 	{#each messages as message, i}
-		<p>query</p>
+		<p style='margin: 10px 0 0 0;'>query</p>
 		<p class="query">{queries[i]}</p>
-		<p>answer</p>
+		<p style='margin: 10px 0 0 0;'>answer</p>
 		<p class="response">{messages[i]}</p>
 	{/each}
 </div>

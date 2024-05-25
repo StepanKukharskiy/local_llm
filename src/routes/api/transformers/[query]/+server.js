@@ -24,7 +24,7 @@ export async function GET({ locals, params }) {
 
         const generator = await pipeline(
             "text2text-generation",
-            "Xenova/LaMini-Flan-T5-248M",
+            "Xenova/LaMini-Flan-T5-783M",
         );
 
         const generatorOutput = await generator(
