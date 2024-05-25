@@ -4,7 +4,7 @@ import { pipeline, env } from '@xenova/transformers';
 // env.allowRemoteModels = true;
 
 env.allowLocalModels = true;
-env.localModelPath = "/models/";
+env.localModelPath = "models/";
 env.allowRemoteModels = false;
 
 export async function GET({ locals, params }) {
@@ -14,7 +14,7 @@ export async function GET({ locals, params }) {
 
         const generator = await pipeline(
             "text2text-generation",
-            "Xenova/LaMini-Flan-T5-248M",
+            "xenova/lamini-flan-t5-248m",
         );
 
         const generatorOutput = await generator(
