@@ -1,5 +1,13 @@
 import { pipeline, env } from '@xenova/transformers';
+import { fileURLToPath } from 'url';
 import path from 'path';
+
+// Get the directory name of the current module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+console.log(__filename)
+console.log(__dirname)
 
 // env.allowLocalModels = false;
 // env.allowRemoteModels = true;
