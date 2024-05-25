@@ -8,6 +8,7 @@ const __dirname = path.dirname(__filename);
 
 console.log(__filename)
 console.log(__dirname)
+// console.log(`/var/task/.netlify/server/entries`)
 
 // env.allowLocalModels = false;
 // env.allowRemoteModels = true;
