@@ -1,10 +1,11 @@
 import { pipeline, env } from '@xenova/transformers';
+import path from 'path';
 
 // env.allowLocalModels = false;
 // env.allowRemoteModels = true;
 
 env.allowLocalModels = true;
-env.localModelPath = "static/models/";
+env.localModelPath = path.resolve('models/');
 env.allowRemoteModels = false;
 
 export async function GET({ locals, params }) {
