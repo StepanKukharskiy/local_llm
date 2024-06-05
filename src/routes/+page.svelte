@@ -3,16 +3,22 @@
 	let messages = [],
 		queries = [];
 	async function generateAnswer() {
+		buttonIsDisabled = true
 		const message = await fetch(`/api/transformers/${query}`);
+		console.log(message)
 		const messageObject = await message.json();
+		console.log(messageObject)
 		queries = [...queries, query];
-		messages = [...messages, messageObject.response];
+		messages = [...messages, messageObject];
+		buttonIsDisabled = false
 	}
+
+	let buttonIsDisabled = false
 </script>
 
 <div class="container">
 	<textarea bind:value={query}></textarea>
-	<button on:click={generateAnswer}>Generate</button>
+	<button on:click={generateAnswer} disabled={buttonIsDisabled}>Generate</button>
 	{#each messages as message, i}
 		<p style='margin: 10px 0 0 0;'>query</p>
 		<p class="query">{queries[i]}</p>
@@ -31,6 +37,7 @@
 		border-radius: 10px;
 		background-color: rgb(215, 242, 253);
 		margin: 5px;
+		white-space: pre-wrap; 
 	}
 	.query {
 		padding: 10px;
