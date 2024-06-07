@@ -30,7 +30,7 @@
 		font-family: 'Courier New', Courier, monospace;
 		margin: 0;
 		text-wrap: wrap;
-		word-break: break-word;
+		word-break: normal;
 		overflow-x: auto;
 		padding: 0 5px;
 		background-color: #f9f9f9;
