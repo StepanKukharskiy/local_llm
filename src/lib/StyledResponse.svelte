@@ -24,6 +24,7 @@
 	div :global(pre) {
         border: 1px solid black;
         border-radius: 10px;
+		background-color: #f9f9f9;
     }
 	div :global(code) {
 		font-family: 'Courier New', Courier, monospace;
