@@ -8,7 +8,8 @@
 
 	async function generateAnswer() {
 		buttonIsDisabled = true;
-		const message = await fetch(`/api/transformers/${query}`);
+		// const message = await fetch(`/api/transformers/${query}`);
+		const message = await fetch(`/api/rag/${query}`);
 		console.log(message);
 		const messageObject = await message.json();
 		const html = await marked(messageObject);
