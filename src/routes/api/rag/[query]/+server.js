@@ -25,6 +25,102 @@ Generative Processes: CA can be used in various generative processes, such as fr
 Computational Design Thinking: CA can be used to explore computational design thinking, which involves applying algorithmic methods to design problems and analyzing the contributions of these models to design education.
 `
 
+const p5jsExampleProject = `
+  //here is the example code for p5js project
+  let sketch = function (p) {
+  p.setup = function () {
+    p.createCanvas(window.innerWidth, window.innerHeight);
+  };
+
+  p.draw = function () {
+    p.background("violet");
+
+    p.ellipse(p.mouseX, p.mouseY, 50);
+  };
+
+  p.windowResized = function () {
+    p.resizeCanvas(window.innerWidth, window.innerHeight);
+  };
+};
+
+let myp5 = new p5(sketch);`
+
+const threejsExampleProject = `
+//here is the example code for threejs project
+//import three.js library
+import * as THREE from "three";
+
+//create a new scene
+const scene = new THREE.Scene();
+//create a camera
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000,
+);
+camera.position.z = 5;
+
+//get the canvas from HTML file
+const appCanvas = document.getElementById("appCanvas");
+
+//setup renderer
+const renderer = new THREE.WebGLRenderer({
+  canvas: appCanvas,
+  antialias: true,
+});
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+//resize function
+function resize() {
+  // Update sizes
+  let width = document.body.clientWidth;
+  let height = document.body.clientHeight;
+
+  // Update camera
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+
+  // Update renderer
+  renderer.setSize(width, height);
+}
+window.addEventListener("resize", resize);
+
+//basic cube geometry
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const material = new THREE.MeshBasicMaterial({ color: 0x4233fb });
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
+
+//game loop function and cube rotation
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+
+  cube.rotateY(0.1);
+}
+animate();
+`
+
+const brainjsExampleProject = `
+//here is the example code for brainjs project
+const trainingData = [
+  { input: { bravery: 1, intelligence: 0, loyalty: 0, cunning: 0 }, output: { gryffindor: 1 } },
+  { input: { bravery: 0, intelligence: 1, loyalty: 0, cunning: 0 }, output: { ravenclaw: 1 } },
+  { input: { bravery: 0, intelligence: 0, loyalty: 1, cunning: 0 }, output: { hufflepuff: 1 } },
+  { input: { bravery: 0, intelligence: 0, loyalty: 0, cunning: 1 }, output: { slytherin: 1 } }
+];
+
+const net = new brain.NeuralNetwork();
+
+net.train(trainingData);
+
+const student = { bravery: 0.8, intelligence: 0.6, loyalty: 0.4, cunning: 0.2 };
+const result = net.run(student);
+console.log(result);
+`
+
 const data = `Algorithms in Design, Architecture, and Games
 The world of design, architecture, and gaming has been revolutionized by the integration of various computational algorithms. These algorithms, including Cellular Automata (CA), Perlin Noise, Agent-Based Modeling (ABM), Fractals, Random Walkers, Neural Networks, Marching Cubes, and Wave Function Collapse, offer unique capabilities for generating complex patterns, simulating natural processes, optimizing designs, and enhancing visual appeal. This article explores these algorithms' applications across different domains.
 
@@ -86,6 +182,9 @@ These algorithms, each with its unique strengths, have transformed the way desig
 export async function GET({ params }) {
     const document = new Document({ text: data, id_: "data" });
     const documentCA = new Document({ text: cellularAutomata, id_: "dataCA" });
+    const documentP5js = new Document({ text: p5jsExampleProject, id_: "dataP5" });
+    const documentThreejs = new Document({ text: threejsExampleProject, id_: "dataThree" });
+    const documentBrainjs = new Document({ text: brainjsExampleProject, id_: "dataBrain" });
     const query = params.query
 
 
@@ -123,7 +222,7 @@ export async function GET({ params }) {
         });
 
         // Load and index documents
-        const index = await VectorStoreIndex.fromDocuments([document, documentCA]);
+        const index = await VectorStoreIndex.fromDocuments([document, documentCA, documentP5js, documentThreejs, documentBrainjs]);
 
         // get retriever
         const retriever = index.asRetriever();

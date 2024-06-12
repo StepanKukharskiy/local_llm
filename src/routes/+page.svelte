@@ -12,7 +12,6 @@
 		const message = await fetch(`/api/rag/${query}`);
 		console.log(message);
 		const messageObject = await message.json();
-		const html = await marked(messageObject);
 		// console.log(messageObject);
 		queries = [...queries, query];
 		messages = [...messages, html];
